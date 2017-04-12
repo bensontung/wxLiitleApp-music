@@ -4,7 +4,8 @@
 
  
  <!--歌单列表-->
-  <view class="flex-wrp item-row"  wx:for="{{songList}}" wx:key="{{item.time}}" id="{{item.songid}}" data-url="{{item.url}}" data-index="{{index}}" data-title="{{item.songname}}" data-cover="{{item.albumpic_big}}"  bindtap="goPlay">
+  <view class="flex-wrp item-row"  wx:for="{{songList}}" wx:key="{{item.time}}" >
+  <view class="play-row" id="{{item.songid}}" data-url="{{item.url}}" data-index="{{index}}" data-title="{{item.songname}}" data-cover="{{item.albumpic_big}}"  bindtap="goPlay">
       <view wx:if="{{item.songid==songId}}"  class="progress"><progress percent="{{percent}}" stroke-width="2"  /></view>
       <view wx:if="{{item.songid==songId}}" class="flex-item item-num">
       <image src="{{item.albumpic_small}}" class="face"></image>
@@ -14,6 +15,10 @@
     <view class="flex-item item-song red-{{item.songid==songId}}">
        <text class="item-songname">{{item.songname}}</text>
        <text class="item-singer">{{item.singername}}</text>
+    </view>
+  </view>
+    <view class="weui-icon-clear" data-songid="{{item.songid}}"  bindtap="delList">
+        <icon type="clear" size="14"></icon>
     </view>
   </view>
 

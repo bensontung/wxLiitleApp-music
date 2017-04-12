@@ -2,23 +2,19 @@ var util = require('../../utils/util.js')
 Page({
   onReady: function (e) {
     var that =this
-    // 初始歌单
-    // var mylist  = JSON.parse(util.getStor("list"))
-    //   that.setData({
-    //       songList: mylist
-    //    });
-    //
      setInterval(function(){
             that.checkProgress()
           },1000)
   },
   onShow: function (e){
-    var that = this
-    var mylist  = JSON.parse(util.getStor("list"))
-    mylist.sort(util.sortBy('time',0))
-     that.setData({
-              songList: mylist
-       });
+    var mylist  = util.getStor("list")
+    if(!util.isEmpty(mylist)){
+      mylist  = JSON.parse(mylist)
+      mylist.sort(util.sortBy('time',0))
+    }
+    this.setData({
+        songList: mylist
+      });
   },
   data: {
     indexId:0,
@@ -34,6 +30,17 @@ Page({
   onLoad: function () {
 
   },
+ delList: function(e){
+   util.delList(e.currentTarget.dataset.songid)
+   var mylist  = util.getStor("list")
+   if(!util.isEmpty(mylist)){
+     mylist  = JSON.parse(mylist)
+     mylist.sort(util.sortBy('time',0))
+   }
+   this.setData({
+      songList: mylist
+    }); 
+ },
  goPlay: function(e){
    var that = this
        if(e.currentTarget.id==this.data.songId){ //选择同一首

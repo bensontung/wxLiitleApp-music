@@ -26,7 +26,7 @@ Page({
     var that = this
     //调用应用实例的方法获取全局数据
     var keyList=util.getStor("key")
-    console.log(keyList);
+    //console.log(keyList);
     if(!util.isEmpty(keyList)){
       //keyList=JSON.parse(keyList)
        that.setData({

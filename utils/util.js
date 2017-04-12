@@ -87,7 +87,29 @@ function addList(list){
       //jsonstr.sort(sortBy('time',0)) //排序
       //保存歌单
       setStor('list',JSON.stringify(jsonstr))
+      jsonstr = null
    }
+   musicList = null
+}
+function delList(id){
+  var oldList = getStor("list")
+  if(!isEmpty(oldList)){
+      var jsonstr = JSON.parse(oldList)
+      var list =[]
+      var result = false
+      for(var i in jsonstr){
+          if(jsonstr[i].songid==id){
+              result = true
+          }else{
+             list.push(jsonstr[i])
+          }
+      }
+      if(result){
+        setStor('list',JSON.stringify(list))
+      }
+      list=null  
+  }
+ oldList=null
 }
 //搜索记录
 function addKeyword(e){
@@ -122,7 +144,9 @@ function addKeyword(e){
       jsonstr.sort(sortBy('time',0)) 
       //保存搜索词
       setStor('key',JSON.stringify(jsonstr))
+      jsonstr = null
    }
+   keyList = null
 }
 function delKeyword(e){
   var keyList = getStor("key")
@@ -141,7 +165,10 @@ function delKeyword(e){
       if(result){
         setStor('key',JSON.stringify(list))
       }
+      list = null
+      jsonstr = null
   }
+  keyList = null
 }
 
 module.exports = {
@@ -149,6 +176,7 @@ module.exports = {
   setStor: setStor,
   getStor: getStor,
   addList: addList,
+  delList: delList,
   addKeyword: addKeyword,
   delKeyword: delKeyword,
   sortBy: sortBy,

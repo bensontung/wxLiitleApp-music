@@ -5,3 +5,11 @@
   margin: 36rpx auto;
   text-align: center;
 }
+
+.weui-icon-clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px 8px;
+  font-size: 0;
+}
