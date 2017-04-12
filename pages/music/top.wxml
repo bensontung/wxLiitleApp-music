@@ -1,0 +1,36 @@
+<view class="section">
+
+ <view class="seciton_title">{{topname}}排行榜</view>
+
+ <!--选择列表-->
+ <view class="kind-list-item {{open ? 'kind-list-item-show' : ''}}">
+    <view  class="kind-list-item-hd " bindtap="kindToggle">
+        <view class="kind-list-text">排行榜选择</view>
+        <view class="kind-list-arrow"></view>
+    </view>
+    <block wx:for="{{topList}}" wx:key="{{item.topid}}">
+        <view class="kind-list-item-bd" id="{{item.topid}}" data-name="{{item.name}}" bindtap="chooseTop">
+            <view class="navigator">
+                <view class="navigator-text">{{item.name}}</view>
+                <view class="navigator-arrow"></view>
+            </view>  
+        </view>
+    </block>
+ </view>
+ 
+ 
+ <!--歌单列表-->
+  <view class="flex-wrp item-row" wx:for="{{songList}}" wx:key="{{item.songid}}" id="{{item.songid}}" data-url="{{item.url}}" data-index="{{index}}" data-title="{{item.songname}}" data-cover="{{item.albumpic_big}}" bindtap="goPlay">
+      <view wx:if="{{item.songid==songId}}"  class="progress"><progress percent="{{percent}}" stroke-width="2"  /></view>
+      <view wx:if="{{item.songid==songId}}" class="flex-item item-num">
+      <image src="{{item.albumpic_small}}" class="face"></image>
+      <image wx:if="{{playSta==0}}" src="../../images/icon_play_slt.png" class="icon"></image>
+      </view>
+      <view wx:else class="flex-item item-num">{{index+1}}.</view>
+    <view class="flex-item item-song red-{{item.songid==songId}}">
+       <text class="item-songname">{{item.songname}}</text>
+       <text class="item-singer">{{item.singername}}</text>
+    </view>
+  </view>
+
+</view>

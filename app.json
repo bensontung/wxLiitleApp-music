@@ -1,0 +1,42 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/music/top",
+    "pages/music/favor",
+    "pages/music/mylist"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "小布音乐",
+    "navigationBarTextStyle":"white"
+  },
+   "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#e67f05",
+    "backgroundColor": "#f0f0f0",
+    "borderStyle": "white",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "images/icon_home.png",
+      "selectedIconPath": "images/icon_home_slt.png"
+    },  {
+      "pagePath": "pages/music/top",
+      "text": "排行榜",
+      "iconPath": "images/icon_top.png",
+      "selectedIconPath": "images/icon_top_slt.png"
+    },{
+      "pagePath": "pages/music/favor",
+      "text": "推荐",
+       "iconPath": "images/icon_good.png",
+      "selectedIconPath": "images/icon_good_slt.png"
+    },{
+      "pagePath": "pages/music/mylist",
+      "text": "我的",
+       "iconPath": "images/icon_set.png",
+      "selectedIconPath": "images/icon_set_slt.png"
+    }],
+    "position":""
+  }
+}

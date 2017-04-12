@@ -1,0 +1,53 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">Hi,{{userInfo.nickName}} !</text>
+  </view>
+</view>
+
+<form bindsubmit="formSubmit" bindreset="formReset">
+   <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+              <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="formSubmit" confirm-type="search"  />
+              <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                  <icon type="clear" size="14"></icon>
+              </view>
+          </view>
+          <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索</view>
+         </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  </view>
+  <!-- 搜索记录 -->
+   <view class="weui-cells searchbar-result" hidden="{{!inputShowed}}">
+        <view  class="weui-cell" hover-class="weui-cell_active" wx:for="{{keyword}}" wx:key="{{item.time}}" >
+            <view class="weui-cell__bd" data-keyword="{{item.keyword}}"  bindtap="chooseInput">
+                <view>{{item.keyword}}</view>
+            </view>
+            <view class="weui-icon-clear" data-keyword="{{item.keyword}}"  bindtap="delKey">
+                  <icon type="clear" size="16"></icon>
+            </view>
+        </view>
+    </view>
+    
+</form>
+
+
+ <!--歌单列表-->
+  <view class="flex-wrp item-row"  wx:for="{{songList}}" wx:key="{{item.songid}}" id="{{item.songid}}" data-url="{{item.m4a}}" data-index="{{index}}" data-title="{{item.songname}}" data-cover="{{item.albumpic_big}}"  bindtap="goPlay">
+      <view wx:if="{{item.songid==songId}}"  class="progress"><progress percent="{{percent}}" stroke-width="2"  /></view>
+      <view wx:if="{{item.songid==songId}}" class="flex-item item-num">
+      <image src="{{item.albumpic_small}}" class="face"></image>
+      <image wx:if="{{playSta==0}}" src="../../images/icon_play_slt.png" class="icon"></image>
+      </view>
+      <view wx:else class="flex-item item-num">{{index+1}}.</view>
+    <view class="flex-item item-song red-{{item.songid==songId}}">
+       <text class="item-songname">{{item.songname}}</text>
+       <text class="item-singer">{{item.singername}}</text>
+    </view>
+  </view>

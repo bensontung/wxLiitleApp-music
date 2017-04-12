@@ -1,0 +1,7 @@
+.seciton_title {
+  display: block;
+  align-items: center;
+  font-size: 14pt;
+  margin: 36rpx auto;
+  text-align: center;
+}

@@ -1,0 +1,72 @@
+@import 'style/weui.wxss';
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+} 
+
+/*music list*/
+.item-row{
+  display: block;
+  margin: 3px 10px;
+  position: relative;
+  height: auto;
+}
+.progress{
+  display: block;
+  width: 100%;
+  margin-bottom: 2px;
+}
+.item-num{
+  overflow: hidden;
+  width: 52px;
+  display: inline-block;
+  vertical-align: middle;
+  height: 50px;
+  color: #888888;
+  position: relative;
+}
+.item-num .face{
+  width: 42px;
+  height: 42px;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.item-num .icon{
+  width:32px;
+  height: 32px;
+  position: absolute;
+  display: block;
+  left: 5px;
+  top: 5px;
+}
+.item-song{
+  display: inline-block;
+  width: 72%;
+  overflow:hidden;
+  height: 50px;
+  vertical-align: middle;
+}
+.item-songname {
+  display: block;
+  width: 100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:28rpx;
+  color: #353535;
+}
+.item-singer{
+  display: block;
+  color: #888888;
+  font-size: 24rpx;
+}
+.red-true .item-songname,.red-true .item-singer{
+  color: #e64340;
+}
